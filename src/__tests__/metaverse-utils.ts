@@ -1,8 +1,14 @@
+import { vi } from 'vitest'
 import Logger from '../logger'
 import { runner } from '../index'
-jest.setTimeout(60 * 1000)
-jest.mock('enquirer', () => ({
-  prompt: null,
+
+const mockPrompt = vi.fn()
+
+vi.mock('enquirer', () => ({
+  default: {
+    prompt: mockPrompt,
+  },
+  prompt: mockPrompt,
 }))
 
 const path = require('path')
@@ -10,7 +16,6 @@ const dirCompare = require('dir-compare')
 
 const opts = { compareContent: true }
 const fs = require('fs-extra')
-const enquirer = require('enquirer')
 
 const logger = new Logger(console.log)
 const failPrompt = () => {
@@ -31,7 +36,7 @@ const createConfig = (metaDir) => ({
 })
 const dir = (m) => path.join(__dirname, 'metaverse', m)
 
-const metaverse = (folder, cmds, promptResponse = null) => {
+const metaverse = (folder: any, cmds: any, promptResponse: any = null) => {
   it(folder, async () => {
     const metaDir = dir(folder)
     console.log('metaverse test in:', metaDir)
@@ -44,15 +49,16 @@ const metaverse = (folder, cmds, promptResponse = null) => {
         continue
       }
       console.log('testing', cmd)
-      enquirer.prompt = failPrompt
+      mockPrompt.mockImplementation(failPrompt)
       if (promptResponse) {
         const last = cmd[cmd.length - 1]
         if (typeof last === 'object') {
           cmd = cmd.slice(cmd.length - 1)
-          enquirer.prompt = () =>
-            Promise.resolve({ ...promptResponse, ...last })
+          mockPrompt.mockImplementation(() =>
+            Promise.resolve(Object.assign({}, promptResponse || {}, last)),
+          )
         } else {
-          enquirer.prompt = () => Promise.resolve(promptResponse)
+          mockPrompt.mockImplementation(() => Promise.resolve(promptResponse))
         }
       }
       const res = await runner(cmd, config)

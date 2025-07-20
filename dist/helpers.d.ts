@@ -1,4 +1,3 @@
-/// <reference types="node" />
 import path from 'path';
 import changeCase from 'change-case';
 declare const helpers: {

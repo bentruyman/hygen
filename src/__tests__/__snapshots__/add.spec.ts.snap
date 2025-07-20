@@ -1,7 +1,16 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`add > should return "skipped" if skip_if has value  1`] = `
+{
+  "status": "ignored",
+  "subject": undefined,
+  "timing": Any<Number>,
+  "type": "add",
+}
+`;
 
 exports[`add should return "skipped" if skip_if has value  1`] = `
-Object {
+{
   "status": "ignored",
   "subject": undefined,
   "timing": Any<Number>,

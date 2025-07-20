@@ -31,7 +31,7 @@ XXX:
 
 */
 const notEmpty = (x) => x && x.length > 0;
-const setup = ({ attributes: { setup, mode, verbose, force } }, args, { logger, cwd }) => __awaiter(void 0, void 0, void 0, function* () {
+const setup = (_a, args_1, _b) => __awaiter(void 0, [_a, args_1, _b], void 0, function* ({ attributes: { setup, mode, verbose, force } }, args, { logger, cwd }) {
     const result = (0, result_1.default)('setup', setup);
     if (notEmpty(setup)) {
         if (!setup.includes('/')) {

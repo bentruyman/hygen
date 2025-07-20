@@ -11,7 +11,7 @@ const defaultTemplates = path_1.default.join(__dirname, '../src/templates');
 (0, index_1.runner)(process.argv.slice(2), {
     templates: defaultTemplates,
     cwd: process.cwd(),
-    logger: new logger_1.default(console.log.bind(console)),
+    logger: new logger_1.default(console.log.bind(console)), // eslint-disable-line no-console
     debug: !!process.env.DEBUG,
     exec: (action, body) => {
         const opts = body && body.length > 0 ? { input: body } : {};

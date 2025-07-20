@@ -61,7 +61,7 @@ const resolvePositionals = (templates, args) => __awaiter(void 0, void 0, void 0
     }
     return [generator, action, name];
 });
-const params = ({ templates, createPrompter }, externalArgv) => __awaiter(void 0, void 0, void 0, function* () {
+const params = (_a, externalArgv_1) => __awaiter(void 0, [_a, externalArgv_1], void 0, function* ({ templates, createPrompter }, externalArgv) {
     const argv = (0, yargs_parser_1.default)(externalArgv);
     const [generator, action, name] = yield resolvePositionals(templates, argv._);
     if (!generator || !action) {

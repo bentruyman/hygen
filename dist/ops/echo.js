@@ -14,7 +14,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const result_1 = __importDefault(require("./result"));
 const notEmpty = x => x && x.length > 0;
-const echo = ({ attributes: { echo } }, _args, { logger }) => __awaiter(void 0, void 0, void 0, function* () {
+const echo = (_a, _args_1, _b) => __awaiter(void 0, [_a, _args_1, _b], void 0, function* ({ attributes: { echo } }, _args, { logger }) {
     const result = (0, result_1.default)('shell', echo);
     if (notEmpty(echo)) {
         logger.colorful(echo);

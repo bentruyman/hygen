@@ -1,3 +1,4 @@
+import { vi } from 'vitest'
 import path from 'path'
 import { configLookup, ConfigResolver, reversePathsToWalk } from '../config'
 
@@ -47,10 +48,10 @@ describe(`config lookup with separator '${sep}'`, () => {
 
 describe('resolver', () => {
   it('resolves closest file', async () => {
-    const exists = jest.fn()
+    const exists = vi.fn()
     exists.mockReturnValue(Promise.resolve(true))
 
-    const load = jest.fn()
+    const load = vi.fn()
     load.mockReturnValue(Promise.resolve({ param: 1 }))
 
     const resolver = new ConfigResolver('.hygen.js', {
@@ -64,13 +65,13 @@ describe('resolver', () => {
   })
 
   it('resolves a file in the walk path', async () => {
-    const exists = jest.fn((f) => {
+    const exists = vi.fn((f) => {
       console.log('f', f)
 
       return Promise.resolve(f.includes(path.join('foo', '.hygen.js')))
     })
 
-    const load = jest.fn()
+    const load = vi.fn()
     load.mockReturnValue(Promise.resolve({ param: 1 }))
 
     const resolver = new ConfigResolver('.hygen.js', {

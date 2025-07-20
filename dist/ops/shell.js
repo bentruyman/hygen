@@ -17,7 +17,7 @@ const ora_1 = __importDefault(require("ora"));
 const result_1 = __importDefault(require("./result"));
 const debug = (0, debug_1.default)('hygen:ops:shell');
 const notEmpty = (x) => x && x.length > 0;
-const shell = ({ attributes: { sh, spinner, sh_ignore_exit }, body }, args, { logger, exec }) => __awaiter(void 0, void 0, void 0, function* () {
+const shell = (_a, args_1, _b) => __awaiter(void 0, [_a, args_1, _b], void 0, function* ({ attributes: { sh, spinner, sh_ignore_exit }, body }, args, { logger, exec }) {
     const result = (0, result_1.default)('shell', sh);
     if (notEmpty(sh)) {
         const spin = (0, ora_1.default)(`     shell: ${spinner === true ? 'running...' : spinner}`);

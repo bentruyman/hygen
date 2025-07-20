@@ -1,4 +1,4 @@
 import type { Prompter } from './types';
-declare const prompt: <Q, T>(createPrompter: () => Prompter<Q, T>, actionfolder: string, args: Record<string, any>) => Promise<object | T>;
+declare const prompt: <Q, T>(createPrompter: () => Prompter<Q, T>, actionfolder: string, args: Record<string, any>) => Promise<T | object>;
 export default prompt;
 //# sourceMappingURL=prompt.d.ts.map

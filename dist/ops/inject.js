@@ -16,7 +16,7 @@ const path_1 = __importDefault(require("path"));
 const fs_extra_1 = __importDefault(require("fs-extra"));
 const result_1 = __importDefault(require("./result"));
 const injector_1 = __importDefault(require("./injector"));
-const injectOp = (action, args, { logger, cwd }) => __awaiter(void 0, void 0, void 0, function* () {
+const injectOp = (action_1, args_1, _a) => __awaiter(void 0, [action_1, args_1, _a], void 0, function* (action, args, { logger, cwd }) {
     const { attributes: { to, inject }, } = action;
     const result = (0, result_1.default)('inject', to);
     if (!(inject && to)) {

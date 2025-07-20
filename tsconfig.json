@@ -4,14 +4,9 @@
   "compilerOptions": {
     "outDir": "dist",
     "strict": false,
-    "isolatedModules": false
+    "isolatedModules": false,
+    "skipLibCheck": true
   },
-  "include": [
-    "./src"
-  ],
-  "exclude": [
-    "**/__tests__/",
-    "test/fixtures",
-    "src/**/*.spec.ts"
-  ]
+  "include": ["./src"],
+  "exclude": ["**/__tests__/", "test/fixtures", "src/**/*.spec.ts"]
 }

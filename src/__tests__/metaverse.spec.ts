@@ -1,3 +1,4 @@
+import { vi } from 'vitest'
 import { metaverse } from './metaverse-utils'
 const enquirer = require('enquirer')
 
@@ -7,7 +8,7 @@ const failPrompt = () => {
 
 describe('metaverse', () => {
   beforeEach(() => {
-    enquirer.prompt = failPrompt
+    vi.spyOn(enquirer, 'prompt').mockImplementation(failPrompt)
   })
   metaverse('hygen-defaults', [['use-defaults']], { overwrite: true })
   metaverse('hygen-extension', [['hygen-js', 'new']], { overwrite: true })
